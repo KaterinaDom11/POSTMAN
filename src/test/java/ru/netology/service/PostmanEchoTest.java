@@ -11,16 +11,16 @@ public class PostmanEchoTest {
     void checkingPOSTRequest() {
         given()
                 .baseUri("https://postman-echo.com")
-                .body("some data") // отправляемые данные
+                .body("Hi") // отправляемые данные
 
                 // Выполняемые действия
-                .when()
+                .when().log().all()
                 .post("/post")
 
                 // Проверки
-                .then()
+                .then().log().all()
                 .statusCode(200)
-                .body("data", equalTo("some data"))
+                .body("data", equalTo("Hi"))
         ;
     }
 }
